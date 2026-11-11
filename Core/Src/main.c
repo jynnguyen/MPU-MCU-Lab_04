@@ -99,14 +99,15 @@ int main(void)
   HAL_TIM_Base_Start_IT(&htim2);
   SCH_Init();
 
+  SCH_Add_Task(callback_10ms, 0, 1);
   SCH_Add_Task(task_500ms, 0, 50);
-  SCH_Add_Task(task_1000ms, 5, 100);
-  SCH_Add_Task(task_1500ms, 10, 150);
-  SCH_Add_Task(task_2000ms, 15, 200);
-  SCH_Add_Task(task_2500ms, 20, 250);
-  SCH_Add_Task(task_test, 500, 0);
-  SCH_Add_Task(task_test, 800, 0);
-  SCH_Add_Task(delete_task_500ms, 400, 0);
+  SCH_Add_Task(task_1000ms, 0, 100);
+  SCH_Add_Task(task_1500ms, 0, 150);
+  SCH_Add_Task(task_2000ms, 0, 200);
+  SCH_Add_Task(task_2500ms, 0, 250);
+  SCH_Add_Task(task_test, 300, 0);
+  SCH_Add_Task(task_test, 600, 0);
+  //SCH_Add_Task(delete_task_500ms, 400, 0);
 
   /* USER CODE END 2 */
 
@@ -219,7 +220,7 @@ static void MX_USART1_UART_Init(void)
 
   /* USER CODE END USART1_Init 1 */
   huart1.Instance = USART1;
-  huart1.Init.BaudRate = 100000;
+  huart1.Init.BaudRate = 115200;
   huart1.Init.WordLength = UART_WORDLENGTH_8B;
   huart1.Init.StopBits = UART_STOPBITS_1;
   huart1.Init.Parity = UART_PARITY_NONE;

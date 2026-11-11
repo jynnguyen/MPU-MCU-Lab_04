@@ -72,21 +72,22 @@ void SCH_Update()
 
 void SCH_Dispatch_Tasks()
 {
+	// uint32_t m = SCH_Lock();
 	while (SCH_count > 0 && SCH_tasks_G[0].RunMe)
 	{
 		sTask dpTask =  SCH_tasks_G[0];
-		int isDeleted = SCH_Delete_Task(dpTask.TaskID);
 
-		if (dpTask.pTask != 0)
-			dpTask.pTask();
-
-		if(isDeleted && dpTask.Period > 0)
+		if(SCH_Delete_Task(dpTask.TaskID) && dpTask.Period > 0)
 		{
 			dpTask.Delay = dpTask.Period;
 			dpTask.RunMe = 0;
 			Insert(&dpTask);
 		}
+
+		if (dpTask.pTask != 0)
+			dpTask.pTask();
 	}
+	// SCH_Unlock(m);
 }
 
 uint32_t SCH_Add_Task(void (*pFunction)(void), uint32_t DELAY, uint32_t PERIOD)

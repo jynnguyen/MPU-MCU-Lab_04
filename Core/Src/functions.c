@@ -21,46 +21,46 @@ int _write(int file, char *ptr, int len)
 void task_500ms()
 {
 	HAL_GPIO_TogglePin(LED_1_GPIO_Port, LED_1_Pin);
-	printf("[%d ms] Task 500ms runs\r\n", getTime());
+	printf("%d T1\r\n", getTime());
 }
 
 void task_1000ms()
 {
 	HAL_GPIO_TogglePin(LED_2_GPIO_Port, LED_2_Pin);
-	printf("[%d ms] Task 1000ms runs\r\n", getTime());
+	printf("%d T2\r\n", getTime());
 }
 
 void task_1500ms()
 {
 	HAL_GPIO_TogglePin(LED_3_GPIO_Port, LED_3_Pin);
-	printf("[%d ms] Task 1500ms runs\r\n", getTime());
+	printf("%d T3\r\n", getTime());
 }
 
 void task_2000ms()
 {
 	HAL_GPIO_TogglePin(LED_4_GPIO_Port, LED_4_Pin);
-	printf("[%d ms] Task 2000ms runs\r\n", getTime());
+	printf("%d T4\r\n", getTime());
 }
 
 void task_2500ms()
 {
 	HAL_GPIO_TogglePin(LED_5_GPIO_Port, LED_5_Pin);
-	printf("[%d ms] Task 2500ms runs\r\n", getTime());
+	printf("%d T5\r\n", getTime());
 }
 
 void task_test()
 {
 	HAL_GPIO_TogglePin(LED_6_GPIO_Port, LED_6_Pin);
-	printf(" -> [%d ms] One time task runs\r\n", getTime());
+	printf("%d T6\r\n", getTime());
 }
 
 void callback_10ms()
 {
-	printf("[%d ms] +10ms\r\n", getTime());
+	printf("%d\r\n", getTime());
 }
 
 void delete_task_500ms()
 {
 	SCH_Delete_Task(1);
-	printf(" -> [%d ms] Delete task_500ms runs\r\n", getTime());
+	printf("%d Del T1\r\n", getTime());
 }
